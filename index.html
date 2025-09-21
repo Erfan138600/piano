@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پیانو تعاملی - آهنگ بلاچو</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body dir="rtl">
+    <header>
+        <h1><i class="fas fa-music"></i> پیانو -عرفان علیخانی</h1>
+       
+    </header>
+
+    <main>
+        <!-- کنترل‌های پخش -->
+        <div class="controls">
+            <button id="playBtn" class="control-btn">
+                <i class="fas fa-play"></i>
+                پخش خودکار
+            </button>
+            <button id="pauseBtn" class="control-btn" disabled>
+                <i class="fas fa-pause"></i>
+                توقف
+            </button>
+            <button id="resetBtn" class="control-btn">
+                <i class="fas fa-redo"></i>
+                شروع مجدد
+            </button>
+            <div class="tempo-control">
+                <label for="tempoSlider">سرعت:</label>
+                <input type="range" id="tempoSlider" min="0.5" max="2" step="0.1" value="1">
+                <span id="tempoValue">1.0x</span>
+            </div>
+        </div>
+
+        <!-- نمایش نت فعال -->
+        <div class="current-note">
+            <div id="noteDisplay">نت فعلی: -</div>
+            <div id="progressBar">
+                <div id="progress"></div>
+            </div>
+        </div>
+
+        <!-- پیانو -->
+        <div class="piano-container">
+            <div class="piano">
+                <!-- کلیدهای سفید -->
+                <div class="white-keys">
+                    <div class="key white-key" data-note="C4" data-key="a">
+                        <span class="key-label">دو<br>A</span>
+                    </div>
+                    <div class="key white-key" data-note="D4" data-key="s">
+                        <span class="key-label">ره<br>S</span>
+                    </div>
+                    <div class="key white-key" data-note="E4" data-key="d">
+                        <span class="key-label">می<br>D</span>
+                    </div>
+                    <div class="key white-key" data-note="F4" data-key="f">
+                        <span class="key-label">فا<br>F</span>
+                    </div>
+                    <div class="key white-key" data-note="G4" data-key="g">
+                        <span class="key-label">سل<br>G</span>
+                    </div>
+                    <div class="key white-key" data-note="A4" data-key="h">
+                        <span class="key-label">لا<br>H</span>
+                    </div>
+                    <div class="key white-key" data-note="B4" data-key="j">
+                        <span class="key-label">سی<br>J</span>
+                    </div>
+                    <div class="key white-key" data-note="C5" data-key="k">
+                        <span class="key-label">دو<br>K</span>
+                    </div>
+                    <div class="key white-key" data-note="D5" data-key="l">
+                        <span class="key-label">ره<br>L</span>
+                    </div>
+                    <div class="key white-key" data-note="E5" data-key=";">
+                        <span class="key-label">می<br>;</span>
+                    </div>
+                </div>
+
+                <!-- کلیدهای سیاه -->
+                <div class="black-keys">
+                    <div class="key black-key" data-note="C#4" data-key="w">
+                        <span class="key-label">دو#<br>W</span>
+                    </div>
+                    <div class="key black-key" data-note="D#4" data-key="e">
+                        <span class="key-label">ره#<br>E</span>
+                    </div>
+                    <div class="key black-key empty"></div>
+                    <div class="key black-key" data-note="F#4" data-key="t">
+                        <span class="key-label">فا#<br>T</span>
+                    </div>
+                    <div class="key black-key" data-note="G#4" data-key="y">
+                        <span class="key-label">سل#<br>Y</span>
+                    </div>
+                    <div class="key black-key" data-note="A#4" data-key="u">
+                        <span class="key-label">لا#<br>U</span>
+                    </div>
+                    <div class="key black-key empty"></div>
+                    <div class="key black-key" data-note="C#5" data-key="o">
+                        <span class="key-label">دو#<br>O</span>
+                    </div>
+                    <div class="key black-key" data-note="D#5" data-key="p">
+                        <span class="key-label">ره#<br>P</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- نت‌های آهنگ بلاچو -->
+        <div class="song-sheet">
+            <h3><i class="fas fa-file-music"></i>نوت اهنگ </h3>
+            <div class="notes-container">
+                <div class="notes-line">
+                    <span class="note-item">G4</span>
+                    <span class="note-item">A4</span>
+                    <span class="note-item">B4</span>
+                    <span class="note-item">C5</span>
+                    <span class="note-item">D5</span>
+                    <span class="note-item">C5</span>
+                    <span class="note-item">B4</span>
+                    <span class="note-item">A4</span>
+                </div>
+                <div class="notes-line">
+                    <span class="note-item">G4</span>
+                    <span class="note-item">F4</span>
+                    <span class="note-item">E4</span>
+                    <span class="note-item">D4</span>
+                    <span class="note-item">C4</span>
+                    <span class="note-item">D4</span>
+                    <span class="note-item">E4</span>
+                    <span class="note-item">F4</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- راهنمای استفاده -->
+        <div class="instructions">
+            <h3><i class="fas fa-keyboard"></i> راهنمای استفاده</h3>
+            <div class="instructions-grid">
+                <div class="instruction-item">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <span>روی کلیدهای پیانو کلیک کنید</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-keyboard"></i>
+                    <span>از کلیدهای کیبورد استفاده کنید (A-L)</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>در موبایل کلیدها را لمس کنید</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-play"></i>
+                    <span>برای پخش خودکار آهنگ دکمه پخش را بزنید</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>ساخته شده با ❤️ برایerfan-web موسیقی دوستان</p>
+    </footer>
+
+    <script src="js/audio.js"></script>
+    <script src="js/piano.js"></script>
+    <script src="js/song.js"></script>
+</body>
+</html>

@@ -1,0 +1,499 @@
+/* استایل‌های اصلی */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazir', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    direction: rtl;
+    color: #333;
+}
+
+/* هدر */
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+}
+
+header i {
+    margin-left: 1rem;
+    color: #ffd700;
+}
+
+/* منطقه اصلی */
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* کنترل‌ها */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.control-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: 'Vazir', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.control-btn i {
+    margin-left: 8px;
+}
+
+.tempo-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 500;
+}
+
+.tempo-control label {
+    font-size: 1rem;
+}
+
+#tempoSlider {
+    width: 100px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    outline: none;
+    border-radius: 3px;
+}
+
+#tempoSlider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ffd700;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#tempoValue {
+    min-width: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* نمایش نت فعال */
+.current-note {
+    text-align: center;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+#noteDisplay {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+#progressBar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ffd700, #ff6b6b);
+    border-radius: 4px;
+    transition: width 0.1s ease;
+}
+
+/* کانتینر پیانو */
+.piano-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.piano {
+    position: relative;
+    display: inline-block;
+    background: #2c3e50;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* کلیدهای سفید */
+.white-keys {
+    display: flex;
+    gap: 2px;
+}
+
+.white-key {
+    width: 60px;
+    height: 200px;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    border: 2px solid #ddd;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 15px;
+    transition: all 0.15s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    user-select: none;
+}
+
+.white-key:hover {
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.white-key.active {
+    background: linear-gradient(to bottom, #667eea, #764ba2);
+    color: white;
+    transform: translateY(3px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* کلیدهای سیاه */
+.black-keys {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 2px;
+}
+
+.black-key {
+    width: 40px;
+    height: 120px;
+    background: linear-gradient(to bottom, #2c3e50, #34495e);
+    border: 2px solid #1a252f;
+    border-radius: 0 0 6px 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    transition: all 0.15s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    user-select: none;
+    color: white;
+}
+
+.black-key:hover {
+    background: linear-gradient(to bottom, #34495e, #3c5a78);
+    transform: translateY(2px);
+}
+
+.black-key.active {
+    background: linear-gradient(to bottom, #e74c3c, #c0392b);
+    transform: translateY(3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.black-key.empty {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* برچسب‌های کلیدها */
+.key-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.2;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.key:hover .key-label {
+    opacity: 1;
+}
+
+.key.active .key-label {
+    opacity: 1;
+    font-weight: 600;
+}
+
+/* صفحه نت‌ها */
+.song-sheet {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.song-sheet h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.song-sheet h3 i {
+    margin-left: 10px;
+    color: #ffd700;
+}
+
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.notes-line {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.note-item {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.note-item.active {
+    background: #ffd700;
+    color: #333;
+    transform: scale(1.1);
+    border-color: #ffed4e;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* راهنمای استفاده */
+.instructions {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.instructions h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.instructions h3 i {
+    margin-left: 10px;
+    color: #ffd700;
+}
+
+.instructions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+}
+
+.instruction-item i {
+    font-size: 1.5rem;
+    color: #ffd700;
+    min-width: 2rem;
+    text-align: center;
+}
+
+/* فوتر */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+}
+
+/* انیمیشن‌ها */
+@keyframes noteHit {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.key.hit {
+    animation: noteHit 0.2s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .piano {
+        transform: scale(0.8);
+        transform-origin: center;
+    }
+
+    .white-key {
+        width: 45px;
+        height: 150px;
+    }
+
+    .black-key {
+        width: 30px;
+        height: 90px;
+    }
+
+    .key-label {
+        font-size: 0.65rem;
+    }
+
+    .instructions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .notes-line {
+        gap: 0.5rem;
+    }
+
+    .note-item {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 0 0.5rem;
+    }
+
+    .piano {
+        transform: scale(0.6);
+    }
+
+    .white-key {
+        width: 35px;
+        height: 120px;
+    }
+
+    .black-key {
+        width: 25px;
+        height: 70px;
+    }
+
+    .key-label {
+        font-size: 0.6rem;
+    }
+
+    header {
+        padding: 1rem;
+    }
+
+    .controls,
+    .current-note,
+    .piano-container,
+    .song-sheet,
+    .instructions {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* حالت لندسکیپ موبایل */
+@media (max-height: 600px) and (orientation: landscape) {
+    .piano {
+        transform: scale(0.7);
+    }
+
+    header {
+        padding: 1rem;
+    }
+
+    .controls,
+    .current-note,
+    .song-sheet {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+}
